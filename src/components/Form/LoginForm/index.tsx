@@ -25,13 +25,13 @@ const LoginForm = () => {
     <StyledForm onSubmit={handleSubmit(submit)}>
       <Input
         {...register('email')}
-        validateError={errors.email}
+        validateError={errors.email?.message}
         label='Email'
         type='text'
       />
       <Input
         {...register('password')}
-        validateError={errors.password}
+        validateError={errors.password?.message}
         label='Senha'
         type='Password'
       />

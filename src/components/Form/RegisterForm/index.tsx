@@ -28,25 +28,25 @@ const RegisterForm = () => {
     <StyledForm onSubmit={handleSubmit(submit)}>
       <Input
         {...register('name')}
-        validateError={errors.name}
+        validateError={errors.name?.message}
         label='Nome'
         type='text'
       />
       <Input
         {...register('email')}
-        validateError={errors.email}
+        validateError={errors.email?.message}
         label='Email'
         type='text'
       />
       <Input
         {...register('password')}
-        validateError={errors.password}
+        validateError={errors.password?.message}
         label='Senha'
         type='text'
       />
       <Input
         {...register('confirm-password')}
-        validateError={errors['confirm-password']}
+        validateError={errors['confirm-password']?.message}
         label='Confirme sua senha'
         type='text'
       />

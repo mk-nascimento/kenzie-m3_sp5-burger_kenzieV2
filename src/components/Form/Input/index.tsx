@@ -8,9 +8,7 @@ const Input = forwardRef<HTMLInputElement, iInputProps>(
     <fieldset>
       <StyledTextField label={label} type={type} ref={ref} {...rest} />
       {validateError ? (
-        <StyledParagraph fontColor='red'>
-          {validateError.message}
-        </StyledParagraph>
+        <StyledParagraph fontColor='red'>{validateError}</StyledParagraph>
       ) : null}
     </fieldset>
   )
