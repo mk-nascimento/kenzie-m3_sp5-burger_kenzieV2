@@ -16,6 +16,7 @@ export const UserContext = createContext<iUserContextValues>(
 
 export const UserProvider = ({ children }: iUserProviderProps) => {
   const navigate = useNavigate();
+
   const [user, setUser] = useState<iUser>({} as iUser);
   const [userLoading, setUserLoading] = useState(false);
   const [token, setToken] = useState(

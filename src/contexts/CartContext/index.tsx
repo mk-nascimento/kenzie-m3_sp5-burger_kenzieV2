@@ -10,9 +10,12 @@ export const CartContext = createContext<iCartContextValues>(
 
 export const CartProvider = ({ children }: iCartProviderProps) => {
   const { token, userLogoff } = useContext(UserContext);
-  const [products, setProducts] = useState<iProduct[]>([]);
+
+  const [amountCartValue, setAmountCartValue] = useState(0);
   const [cartProducts, setCartProducts] = useState<iProduct[]>([]);
+  const [products, setProducts] = useState<iProduct[]>([]);
   const [productsLoading, setProductsLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     getProducts();
@@ -27,24 +30,26 @@ export const CartProvider = ({ children }: iCartProviderProps) => {
   }, []);
 
   useEffect(() => {
-    if (cartProducts.length)
+    if (cartProducts.length) {
       localStorage.setItem(
         '@Kenzie-Burguer__Cart-Products',
         JSON.stringify(cartProducts)
       );
-    else {
+
+      const amountCart = cartProducts
+        .map(({ price }) => price)
+        .reduce((acc, current) => acc + current, 0);
+
+      setAmountCartValue(amountCart);
+    } else {
       localStorage.removeItem('@Kenzie-Burguer__Cart-Products');
     }
   }, [cartProducts]);
 
-  const removeProduct = (product: iProduct) =>
-    cartProducts.filter((cartProduct) => cartProduct.id !== product.id);
+  const clearCart = () => setCartProducts([]);
 
   const addProductOnCart = (product: iProduct) =>
     setCartProducts([...cartProducts, product]);
-
-  const removeProductFromCart = (product: iProduct) =>
-    setCartProducts(removeProduct(product));
 
   const getProducts = async () => {
     if (token)
@@ -69,12 +74,24 @@ export const CartProvider = ({ children }: iCartProviderProps) => {
       }
   };
 
+  const removeProduct = (product: iProduct) =>
+    cartProducts.filter((cartProduct) => cartProduct.id !== product.id);
+
+  const removeProductFromCart = (product: iProduct) =>
+    setCartProducts(removeProduct(product));
+
+  const setModal = () => setShowModal(!showModal);
+
   const values = {
     addProductOnCart,
+    amountCartValue,
     cartProducts,
+    clearCart,
     products,
     productsLoading,
     removeProductFromCart,
+    setModal,
+    showModal,
   };
 
   return <CartContext.Provider value={values}>{children}</CartContext.Provider>;
