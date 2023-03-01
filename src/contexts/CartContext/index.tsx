@@ -27,7 +27,7 @@ export const CartProvider = ({ children }: iCartProviderProps) => {
 
       setCartProducts(parsedCartStorage);
     }
-  }, []);
+  }, [token]);
 
   useEffect(() => {
     if (cartProducts.length) {
@@ -68,6 +68,7 @@ export const CartProvider = ({ children }: iCartProviderProps) => {
         if (axios.isAxiosError<string>(error))
           if (error.response?.data === 'jwt expired') {
             userLogoff();
+            console.error(error.response.data);
           }
       } finally {
         setProductsLoading(false);
