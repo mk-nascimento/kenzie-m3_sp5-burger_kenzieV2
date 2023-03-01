@@ -42,13 +42,13 @@ const RegisterForm = () => {
         {...register('password')}
         validateError={errors.password?.message}
         label='Senha'
-        type='text'
+        type='password'
       />
       <Input
         {...register('confirm-password')}
         validateError={errors['confirm-password']?.message}
         label='Confirme sua senha'
-        type='text'
+        type='password'
       />
       <StyledButton $buttonSize='default' $buttonStyle='gray' type='submit'>
         Cadastrar
