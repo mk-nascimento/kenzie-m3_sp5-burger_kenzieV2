@@ -9,11 +9,11 @@ const Router = () => (
   <Routes>
     <Route path='/' element={<PublicRoutes />}>
       <Route index element={<LoginPage />} />
-      <Route path='/register' element={<RegisterPage />} />
-    </Route>
+      <Route path='register' element={<RegisterPage />} />
 
-    <Route path='/shop' element={<ProtectedRoutes />}>
-      <Route index element={<ShopPage />} />
+      <Route path='shop' element={<ProtectedRoutes />}>
+        <Route index element={<ShopPage />} />
+      </Route>
     </Route>
   </Routes>
 );
