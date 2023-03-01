@@ -13,6 +13,7 @@ export interface iProduct {
 export interface iCartContextValues {
   addProductOnCart: (product: iProduct) => void;
   products: iProduct[];
+  cartProducts: iProduct[];
   productsLoading: boolean;
   removeProductFromCart: (product: iProduct) => void;
 }

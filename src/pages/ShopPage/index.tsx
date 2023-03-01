@@ -1,5 +1,5 @@
 import { StyledShopPage } from './style';
-// import CartModal from '../../components/CartModal';
+import CartModal from '../../components/CartModal';
 import Header from '../../components/Header';
 import ProductList from '../../components/ProductList';
 
@@ -7,7 +7,7 @@ import { StyledContainer } from '../../styles/grid';
 
 const ShopPage = () => (
   <StyledShopPage>
-    {/* <CartModal /> */}
+    <CartModal />
     <Header />
     <main>
       <StyledContainer containerWidth={1300}>

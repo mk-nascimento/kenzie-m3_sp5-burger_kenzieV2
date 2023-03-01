@@ -11,7 +11,7 @@ export const CartContext = createContext<iCartContextValues>(
 export const CartProvider = ({ children }: iCartProviderProps) => {
   const { token, userLogoff } = useContext(UserContext);
   const [products, setProducts] = useState<iProduct[]>([]);
-  const [cartProducts, setCartProducts] = useState<iProduct[] | []>([]);
+  const [cartProducts, setCartProducts] = useState<iProduct[]>([]);
   const [productsLoading, setProductsLoading] = useState(false);
 
   useEffect(() => {
@@ -71,6 +71,7 @@ export const CartProvider = ({ children }: iCartProviderProps) => {
 
   const values = {
     addProductOnCart,
+    cartProducts,
     products,
     productsLoading,
     removeProductFromCart,
