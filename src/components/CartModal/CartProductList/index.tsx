@@ -13,7 +13,7 @@ const CartProductList = () => {
     <StyledCartProductList>
       <ul>
         {cartProducts.map((cartProduct) => (
-          <CartProductCard key={cartProduct.id} product={cartProduct} />
+          <CartProductCard key={crypto.randomUUID()} product={cartProduct} />
         ))}
       </ul>
 

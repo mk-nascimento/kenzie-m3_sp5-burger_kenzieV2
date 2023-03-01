@@ -25,6 +25,9 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
 
   useEffect(() => {
     if (token) navigate('/shop');
+    else {
+      navigate('/');
+    }
   }, [token]);
 
   const setNewtoken = (newToken: string) => {
@@ -47,8 +50,8 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
         navigate('/shop');
       }
     } catch (error) {
-      // if (axios.isAxiosError<string>(error))
-      //   console.error(error.response?.data);
+      if (axios.isAxiosError<string>(error))
+        console.error(error.response?.data);
     } finally {
       setUserLoading(false);
     }
@@ -74,8 +77,8 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
         navigate('/shop');
       }
     } catch (error) {
-      // if (axios.isAxiosError<string>(error))
-      //   console.error(error.response?.data);
+      if (axios.isAxiosError<string>(error))
+        console.error(error.response?.data);
     } finally {
       setUserLoading(false);
     }

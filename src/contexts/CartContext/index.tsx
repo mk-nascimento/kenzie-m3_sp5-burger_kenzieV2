@@ -69,7 +69,6 @@ export const CartProvider = ({ children }: iCartProviderProps) => {
           if (error.response?.data === 'jwt expired') {
             userLogoff();
           }
-        // Sessão expirada, faça login novamente
       } finally {
         setProductsLoading(false);
       }
