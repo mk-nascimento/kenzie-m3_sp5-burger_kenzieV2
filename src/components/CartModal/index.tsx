@@ -21,7 +21,7 @@ const CartModal = () => {
           </button>
         </header>
         <div className='cartBox'>
-          {cartProducts ? (
+          {cartProducts.length ? (
             <CartProductList />
           ) : (
             <div className='emptyBox'>

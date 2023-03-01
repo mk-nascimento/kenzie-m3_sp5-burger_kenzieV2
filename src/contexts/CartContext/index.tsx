@@ -43,6 +43,7 @@ export const CartProvider = ({ children }: iCartProviderProps) => {
       setAmountCartValue(amountCart);
     } else {
       localStorage.removeItem('@Kenzie-Burguer__Cart-Products');
+      setAmountCartValue(0);
     }
   }, [cartProducts]);
 

@@ -1,54 +1,55 @@
-import styled from "styled-components";
-import { AnimationFadeIn } from "../../styles/animations";
+import styled from 'styled-components';
+import { AnimationFadeIn } from '../../styles/animations';
 
 export const StyledCartModalBox = styled.div`
-    position: fixed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
+  width: 100%;
+  height: 100vh;
+  padding: 0 16px;
+
+  background: rgba(51, 51, 51, 0.5);
+  z-index: 1001;
+
+  dialog {
+    animation: ${AnimationFadeIn} 0.5s;
     width: 100%;
-    height: 100vh;
+    max-width: 500px;
+    background: ${({ theme }) => theme.colors.white};
 
-    background: rgba(51, 51, 51, .5);
-    z-index: 1001;
+    header {
+      display: flex;
+      background: ${({ theme }) => theme.colors.primary};
+      padding: 12px 20px;
 
-    dialog{
-        animation: ${AnimationFadeIn} .5s;
-        width: 100%;
-        max-width: 500px;
-        background: ${({theme}) => theme.colors.white};
+      h2 {
+        color: ${({ theme }) => theme.colors.white};
+      }
 
-        header{
-            display: flex;
-            background: ${({theme}) => theme.colors.primary};
-            padding: 12px 20px;
+      button {
+        background: transparent;
+        color: ${({ theme }) => theme.colors.white};
+        opacity: 0.5;
+        transition: 0.4s;
 
-            h2{
-                color: ${({theme}) => theme.colors.white};
-            }
-
-            button{
-                background: transparent;
-                color: ${({theme}) => theme.colors.white};
-                opacity: .5;
-                transition: .4s;
-
-                :hover{
-                    opacity: 1;
-                }
-            }
+        :hover {
+          opacity: 1;
         }
-
-        .cartBox{
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            padding: 20px;
-
-            @media (max-width: 450px){
-                padding: 15px;
-            }
-        }
+      }
     }
-`
+
+    .cartBox {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 20px;
+
+      @media (max-width: 450px) {
+        padding: 15px;
+      }
+    }
+  }
+`;
