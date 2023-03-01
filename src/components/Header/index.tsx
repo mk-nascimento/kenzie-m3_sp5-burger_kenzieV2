@@ -6,10 +6,12 @@ import { StyledHeader } from './style';
 import LogoKenzieBurguer from '../../assets/LogoKenzieBurguer.svg';
 
 import { StyledContainer } from '../../styles/grid';
+import { UserContext } from '../../contexts/UserContext';
 import { CartContext } from '../../contexts/CartContext';
 
 const Header = () => {
   const { setModal } = useContext(CartContext);
+  const { userLogoff } = useContext(UserContext);
 
   return (
     <StyledHeader>
@@ -26,7 +28,7 @@ const Header = () => {
               <button type='button' onClick={setModal}>
                 <MdShoppingCart size={28} />
               </button>
-              <button type='button'>
+              <button type='button' onClick={userLogoff}>
                 <MdLogout size={28} />
               </button>
             </div>

@@ -29,8 +29,10 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
 
   const setNewtoken = (newToken: string) => {
     if (!newToken) localStorage.removeItem('@Kenzie-Burguer__AuthToken');
-    localStorage.setItem('@Kenzie-Burguer__AuthToken', newToken);
-    setToken(newToken);
+    else {
+      localStorage.setItem('@Kenzie-Burguer__AuthToken', newToken);
+      setToken(newToken);
+    }
   };
 
   const userLogin = async (formData: iApiData) => {
